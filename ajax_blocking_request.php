@@ -4,6 +4,11 @@
 session_name('blocking_sessions');
 session_start();
 
+if (isset($_GET['primer'])) {
+  // First AJAX call just to create the session, quit now.
+  die();
+}
+
 $counter = (int) $_GET['div'];
 
 // Read all the data from the session and close it
