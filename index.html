@@ -68,14 +68,17 @@ Each AJAX call takes 4 seconds to load. Left are blocking PHP sessions, right no
   </tr>
 </table>
 <script>
-$("#block_1").load('./ajax_blocking_request.php?primer');
-$("#block_2").load('./ajax_blocking_request.php?div=1');
-$("#block_3").load('./ajax_blocking_request.php?div=2');
-$("#block_4").load('./ajax_blocking_request.php?div=3');
+$("#block_1").load('./ajax_blocking_request.php?primer', function() {
+  $("#block_2").load('./ajax_blocking_request.php?div=1');
+  $("#block_3").load('./ajax_blocking_request.php?div=2');
+  $("#block_4").load('./ajax_blocking_request.php?div=3');
+});
 
-$("#nonblock_1").load('./ajax_nonblocking_request.php?primer');
-$("#nonblock_2").load('./ajax_nonblocking_request.php?div=1');
-$("#nonblock_3").load('./ajax_nonblocking_request.php?div=2');
-$("#nonblock_4").load('./ajax_nonblocking_request.php?div=3');
+$("#nonblock_1").load('./ajax_nonblocking_request.php?primer', function() {
+  $("#nonblock_2").load('./ajax_nonblocking_request.php?div=1');
+  $("#nonblock_3").load('./ajax_nonblocking_request.php?div=2');
+  $("#nonblock_4").load('./ajax_nonblocking_request.php?div=3');
+});
+
 </script>
 </body>
