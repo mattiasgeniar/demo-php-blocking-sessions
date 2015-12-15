@@ -1,0 +1,71 @@
+<html>
+<!-- don't judge mah HTML skillz -->
+
+<head>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+<style>
+{
+  font-size: 14px;
+}
+th {
+  font-size: 2em;
+  background-color: #fdfdfd;
+}
+.div_basics {
+  display: block;
+  width: 70px;
+  height: 50px;
+  color: white;
+  padding: 15px;
+}
+.div_blocking {
+  background-color: red;
+}
+
+.div_nonblocking {
+  background-color: green;
+}
+</style>
+</head>
+
+<body>
+
+This page calls 3 AJAX calls simultanuously. Each block below will update once the AJAX call is completed.<br />
+Each AJAX call takes 4 seconds to load. Left are blocking PHP sessions, right non-blocking.<br />
+<br />
+<table width="500px">
+  <tr>
+    <th width="50%">
+      Blocking PHP session calls
+    </th>
+    <th>
+      Non-blocking PHP sessions
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <div id="block_1" class="div_basics div_blocking"></div>
+      <br />
+      <div id="block_2" class="div_basics div_blocking"></div>
+      <br />
+      <div id="block_3" class="div_basics div_blocking"></div>
+    </td>
+    <td>
+      <div id="nonblock_1" class="div_basics div_nonblocking"></div>
+      <br />
+      <div id="nonblock_2" class="div_basics div_nonblocking"></div>
+      <br />
+      <div id="nonblock_3" class="div_basics div_nonblocking"></div>
+    </td>
+  </tr>
+</table>
+<script>
+//$("#block_1").load('./ajax_blocking_request.php?div=1');
+//$("#block_2").load('./ajax_blocking_request.php?div=2');
+//$("#block_3").load('./ajax_blocking_request.php?div=3');
+
+$("#nonblock_1").load('./ajax_nonblocking_request.php?div=1');
+$("#nonblock_2").load('./ajax_nonblocking_request.php?div=2');
+$("#nonblock_3").load('./ajax_nonblocking_request.php?div=3');
+</script>
+</body>
